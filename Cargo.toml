@@ -1,0 +1,53 @@
+# Rust Template Workspace Configuration
+# Customize this file for your project needs
+
+[workspace]
+resolver = "2"
+members = [
+    "shared",
+    "examples/hello_world",
+    "examples/my_lib",
+    "examples/web_server",
+    "examples/cli_tool",
+    "examples/wasm_example",
+]
+
+# Optional: Add your main project metadata here
+# [package]
+# name = "your-project-name"
+# version = "0.1.0"
+# authors = ["Your Name <your.email@example.com>"]
+# description = "Your project description"
+# license = "MIT OR Apache-2.0"
+# repository = "https://github.com/yourusername/your-repo"
+
+[workspace.dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Time utilities
+chrono = { version = "0.4", features = ["serde"] }
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# CLI framework
+clap = { version = "4.0", features = ["derive"] }
+
+# Testing
+criterion = { version = "0.5", features = ["html_reports"] }
+
+# Web framework
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# WebAssembly
+wasm-bindgen = "0.2"
+js-sys = "0.3"
+web-sys = "0.3"

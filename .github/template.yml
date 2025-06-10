@@ -1,0 +1,82 @@
+# GitHub Template Configuration
+# This file configures the template behavior when users click "Use this template"
+
+name: "Rust Development Template"
+description: "Production-ready Rust development environment with examples and best practices"
+
+# Template prompts for GitHub's "Use this template" workflow
+prompts:
+  - name: "project_name"
+    description: "Name of your new Rust project"
+    type: "input"
+    required: true
+    default: "my-rust-project"
+
+  - name: "project_description"
+    description: "Brief description of your project"
+    type: "input"
+    required: false
+    default: "A modern Rust application"
+
+  - name: "author_name"
+    description: "Your name (for Cargo.toml)"
+    type: "input"
+    required: false
+    default: "Your Name"
+
+  - name: "author_email"
+    description: "Your email (for Cargo.toml)"
+    type: "input"
+    required: false
+    default: "your.email@example.com"
+
+  - name: "license"
+    description: "License for your project"
+    type: "choice"
+    required: false
+    default: "MIT OR Apache-2.0"
+    choices:
+      - "MIT"
+      - "Apache-2.0"
+      - "MIT OR Apache-2.0"
+      - "GPL-3.0"
+      - "BSD-3-Clause"
+
+  - name: "project_type"
+    description: "Primary project type"
+    type: "choice"
+    required: true
+    default: "binary"
+    choices:
+      - "binary"
+      - "library"
+      - "web-server"
+      - "cli-tool"
+      - "wasm"
+      - "workspace"
+
+  - name: "include_examples"
+    description: "Include example projects for reference"
+    type: "boolean"
+    required: false
+    default: true
+
+  - name: "include_ci"
+    description: "Include GitHub Actions CI/CD workflow"
+    type: "boolean"
+    required: false
+    default: true
+
+  - name: "include_devcontainer"
+    description: "Include VS Code dev container configuration"
+    type: "boolean"
+    required: false
+    default: true
+
+# Files to exclude from the template
+exclude:
+  - "STATUS.md"
+  - "CHANGELOG.md"
+  - ".github/template.yml"
+  - "target/"
+  - "Cargo.lock"

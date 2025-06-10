@@ -1,0 +1,12 @@
+# Rustfmt configuration for consistent code formatting
+# https://rust-lang.github.io/rustfmt/
+
+edition = "2021"
+max_width = 100
+tab_spaces = 4
+newline_style = "Unix"
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+reorder_imports = true
+wrap_comments = true
+format_code_in_doc_comments = true

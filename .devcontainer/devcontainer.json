@@ -1,0 +1,82 @@
+{
+    "name": "Rust Development Environment",
+    "image": "mcr.microsoft.com/devcontainers/rust:1-1-bookworm",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true,
+            "installOhMyZsh": true,
+            "upgradePackages": true
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts",
+            "nodeGypDependencies": true,
+            "nvmInstallPath": "/usr/local/share/nvm"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.11",
+            "installTools": true,
+            "optimize": true
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "tamasfe.even-better-toml",
+                "serayuzgur.crates",
+                "fill-labs.dependi",
+                "github.vscode-pull-request-github",
+                "ms-python.python",
+                "ms-python.pylint",
+                "ms-python.black-formatter",
+                "ms-python.isort",
+                "ms-toolsai.jupyter",
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode",
+                "ms-vscode.vscode-typescript-next"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "files.exclude": {
+                    "**/target": true,
+                    "**/.git": true
+                },
+                "rust-analyzer.checkOnSave.command": "clippy",
+                "rust-analyzer.cargo.features": "all",
+                "rust-analyzer.procMacro.enable": true,
+                "rust-analyzer.completion.addCallArgumentSnippets": true,
+                "rust-analyzer.completion.addCallParenthesis": true,
+                "rust-analyzer.inlayHints.enable": true,
+                "rust-analyzer.inlayHints.chainingHints": true,
+                "rust-analyzer.inlayHints.parameterHints": true,
+                "rust-analyzer.inlayHints.typeHints": true,
+                "lldb.executable": "/usr/bin/lldb",
+                "lldb.deriveSourceMap": {
+                    "/rustc": "${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
+                }
+            }
+        }
+    },
+    "onCreateCommand": "cargo install cargo-watch cargo-edit cargo-nextest",
+    "postCreateCommand": "echo '🦀 Rust development environment ready!'",
+    "remoteUser": "vscode",
+    "forwardPorts": [3000, 8080, 8000],
+    "portsAttributes": {
+        "3000": {
+            "label": "Development Server",
+            "onAutoForward": "notify"
+        },
+        "8080": {
+            "label": "Web Server",
+            "onAutoForward": "notify"
+        },
+        "8000": {
+            "label": "HTTP Server",
+            "onAutoForward": "notify"
+        }
+    }
+}
