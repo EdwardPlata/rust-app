@@ -10,6 +10,7 @@ members = [
     "examples/web_server",
     "examples/cli_tool",
     "examples/wasm_example",
+    "egui-dashboard-designer",
 ]
 
 # Optional: Add your main project metadata here
